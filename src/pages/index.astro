@@ -11,7 +11,8 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
 			@add="titles.push($data.input); input=''">
 		<h1> Barley Poll </h1>
-		<div>
+		<div id="result"></div>
+		<div id="poll">
 			<ul>
 				<template x-for="title in titles">
 					<Option />
@@ -48,7 +49,7 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 		border-radius: 16px;
 		padding: 0px 40px 0px 40px;
 	}
-	div {
+	#poll {
 		width: 450px;
 		margin: 150px auto 0px auto;
 		padding: 10px 30px 10px 30px;

@@ -1,0 +1,24 @@
+---
+export const partial = true;
+
+import add from '../../db/poll';
+
+let id: number;
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const titres = JSON.parse(data.get("titles").toString());
+    id = await add(titres);
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+  }
+}
+
+const host = `${Astro.url.origin}/${id}`;
+---
+
+<p>Your poll is ready !</p>
+<a href={host}>{host}</a>

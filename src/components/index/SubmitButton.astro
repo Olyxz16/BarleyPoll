@@ -2,7 +2,7 @@
 export const partial = true;
 ---
 
-<form hx-post="/poll/new"> 
+<form hx-post="/poll/new" hx-target="#result"> 
     <input type="hidden" name="titles" :value="JSON.stringify(titles)">
     <button id="submit" type="submit"> Create </button>
 </form>
