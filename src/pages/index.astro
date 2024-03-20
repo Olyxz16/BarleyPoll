@@ -8,7 +8,7 @@ import InputArea from '../components/index/InputArea.astro';
 <IndexLayout>
 	<main x-data={`{titles: [], input: ""}`} 
 			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
-			@submit="titles.push($data.input); input=''">
+			@add="titles.push($data.input); input=''">
 		<h1> Barley Poll </h1>
 		<ul>
 			<template x-for="title in titles">
