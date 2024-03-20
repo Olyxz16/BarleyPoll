@@ -9,7 +9,7 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 <IndexLayout>
 	<main x-data={`{titles: [], input: ""}`} 
 			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
-			@add="titles.push($data.input); input=''">
+			@add="$data.input.length>0&&titles.push($data.input); input=''">
 		<h1> Barley Poll </h1>
 		<div id="result"></div>
 		<div id="poll">
