@@ -1,12 +1,12 @@
 ---
-import IndexLayout from '../layouts/IndexLayout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 import Option from '../components/index/Option.astro';
 import Separator from '../components/index/Separator.astro';
 import InputArea from '../components/index/InputArea.astro';
 import SubmitButton from '../components/index/SubmitButton.astro';
 ---
 
-<IndexLayout>
+<MainLayout>
 	<main x-data={`{titles: [], input: ""}`} 
 			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
 			@add="$data.input.length>0&&titles.push($data.input); input=''">
@@ -23,7 +23,7 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 			<SubmitButton />
 		</div>
 	</main>
-</IndexLayout>
+</MainLayout>
 
 
 
