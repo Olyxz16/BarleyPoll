@@ -1,10 +1,10 @@
 ---
 export const partial = true;
 
-const { "@click": click } = Astro.props;
+const props = Astro.props;
 ---
 
-<button @click={click}>
+<button {...props}>
     <slot />
 </button>
 
