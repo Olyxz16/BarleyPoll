@@ -1,0 +1,54 @@
+---
+import LayoutIndex from '../layouts/IndexLayout.astro';
+import Option from '../components/index/Option.astro';
+import Separator from '../components/index/Separator.astro';
+import InputArea from '../components/index/InputArea.astro';
+---
+
+<LayoutIndex>
+	<main x-data={`{titles: [], input: ""}`} 
+			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
+			@submit="titles.push($data.input); input=''">
+		<h1> Barley Poll </h1>
+		<ul>
+			<template x-for="title in titles">
+				<Option />
+				<Separator />
+			</template>
+			<InputArea />
+		</ul>
+	</main>
+</LayoutIndex>
+
+
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	ul {
+		border: 1px solid #313338;
+		border-radius: 16px;
+
+		width: 450px;
+		margin: 150px auto 0px auto;
+		padding: 10px 30px 10px 30px;
+
+		text-align: center;
+
+		list-style-type: none;
+	}
+</style>
