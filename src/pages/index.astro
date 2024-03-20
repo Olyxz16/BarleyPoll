@@ -3,6 +3,7 @@ import IndexLayout from '../layouts/IndexLayout.astro';
 import Option from '../components/index/Option.astro';
 import Separator from '../components/index/Separator.astro';
 import InputArea from '../components/index/InputArea.astro';
+import SubmitButton from '../components/index/SubmitButton.astro';
 ---
 
 <IndexLayout>
@@ -10,13 +11,16 @@ import InputArea from '../components/index/InputArea.astro';
 			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
 			@add="titles.push($data.input); input=''">
 		<h1> Barley Poll </h1>
-		<ul>
-			<template x-for="title in titles">
-				<Option />
-				<Separator />
-			</template>
-			<InputArea />
-		</ul>
+		<div>
+			<ul>
+				<template x-for="title in titles">
+					<Option />
+					<Separator />
+				</template>
+				<InputArea />
+			</ul>
+			<SubmitButton />
+		</div>
 	</main>
 </IndexLayout>
 
@@ -42,7 +46,9 @@ import InputArea from '../components/index/InputArea.astro';
 	ul {
 		border: 1px solid #313338;
 		border-radius: 16px;
-
+		padding: 0px 40px 0px 40px;
+	}
+	div {
 		width: 450px;
 		margin: 150px auto 0px auto;
 		padding: 10px 30px 10px 30px;
