@@ -8,19 +8,30 @@ export async function vote(id, ip, choice) {
     } catch(e) {
     }
 }
-export async function get(id) {
+export async function get(id, ip) {
     const choices = (await sql`
-        SELECT choices FROM poll WHERE id = ${id}
+        SELECT choices 
+        FROM poll 
+        WHERE id = ${id}
     `)[0].choices;
-    let votes = []
-    for(let choice of choices) {
+    const choice = (await sql`
+        SELECT choice 
+        FROM vote
+        WHERE id = ${id} 
+        AND ip = ${ip} 
+    `)[0]?.choice;
+    let votes = [];
+    for(let c of choices) {
         const count = (await sql`
             SELECT COUNT(*) as count
             FROM vote
-            WHERE id=${id} AND choice=${choice}`)[0].count;
-        votes.push({choice: choice, count: parseInt(count)});
+            WHERE id=${id} AND choice=${c}`)[0].count;
+        votes.push({choice: c, count: parseInt(count)});
     }
-    return votes;
+    return {
+        choice: choice,
+        votes: votes
+    };
 }
 
 
