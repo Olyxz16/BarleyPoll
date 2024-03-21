@@ -3,7 +3,7 @@ import sql from './db';
 export default async function add(titres) {
     const id = await generateID();
     await sql`
-        INSERT INTO poll (id, titre) VALUES (${id}, ${titres})
+        INSERT INTO poll (id, titles) VALUES (${id}, ${titres})
     `;
     return id;
 }

@@ -21,7 +21,7 @@ async function initPoll() {
   CREATE TABLE IF NOT EXISTS
     poll (
       id INTEGER PRIMARY KEY,
-      titre VARCHAR(255)[]
+      titles VARCHAR(255)[]
   );`;
 }
 async function initVote() {
@@ -30,7 +30,7 @@ async function initVote() {
     vote (
       id INTEGER,
       ip VARCHAR(255),
-      vote VARCHAR(255),
+      title VARCHAR(255),
       PRIMARY KEY (id, ip)
   );`;
 }
