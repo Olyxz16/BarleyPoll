@@ -3,18 +3,20 @@ import MainLayout from '../layouts/MainLayout.astro';
 import Option from '../components/index/Option.astro';
 import Separator from '../components/Separator.astro';
 import InputArea from '../components/index/InputArea.astro';
+import TitleInputArea from '../components/index/TitleInputArea.astro';
 import SubmitButton from '../components/index/SubmitButton.astro';
 ---
 
 <MainLayout>
-	<main x-data={`{titles: [], input: ""}`} 
-			@remove="titles.splice(titles.indexOf($event.detail.title), 1)"
-			@add="$data.input.length>0&&titles.push($data.input); input=''">
+	<main x-data={`{title: "", choices: [], input: ""}`} 
+			@remove="choices.splice(choices.indexOf($event.detail.choice), 1)"
+			@add="$data.input.length>0&&choices.push($data.input); input=''">
 		<h1> Barley Poll </h1>
 		<div id="result"></div>
 		<div id="poll">
+			<TitleInputArea />
 			<ul>
-				<template x-for="title in titles">
+				<template x-for="choice in choices">
 					<Option />
 					<Separator />
 				</template>
@@ -24,7 +26,6 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 		</div>
 	</main>
 </MainLayout>
-
 
 
 <style>
@@ -51,11 +52,14 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 	}
 	#poll {
 		width: 450px;
-		margin: 150px auto 0px auto;
+		margin: 100px auto 0px auto;
 		padding: 10px 30px 10px 30px;
 
 		text-align: center;
 
 		list-style-type: none;
+	}
+	#result {
+		text-align: center;
 	}
 </style>

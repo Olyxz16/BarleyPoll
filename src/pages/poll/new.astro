@@ -8,8 +8,9 @@ let id: number;
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
-    const titres = JSON.parse(data.get("titles").toString());
-    id = await add(titres);
+    const title = data.get("title");
+    const choices = JSON.parse(data.get("choices").toString());
+    id = await add(title, choices);
   } catch (error) {
     if (error instanceof Error) {
       throw error;

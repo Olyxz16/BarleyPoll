@@ -1,9 +1,9 @@
 import sql from './db';
 
-export async function add(titres) {
+export async function add(title, choices) {
     const id = await generateID();
     await sql`
-        INSERT INTO poll (id, titles) VALUES (${id}, ${titres})
+        INSERT INTO poll (id, title, choices) VALUES (${id}, ${title}, ${choices})
     `;
     return id;
 }

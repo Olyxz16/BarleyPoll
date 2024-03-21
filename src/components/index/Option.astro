@@ -6,8 +6,8 @@ import Button from '../Button.astro';
 
 
 <li>
-    <p x-text="title"> </p>
-    <Button @click="$dispatch('remove', {title: title})">
+    <p x-text="choice"> </p>
+    <Button @click="$dispatch('remove', {choice: choice})">
         <img src="/trashicon.svg"/>
     </Button>
 </li>
