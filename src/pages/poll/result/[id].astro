@@ -1,0 +1,54 @@
+---
+export const partial = true;
+
+import PreVotePoll from '../../../components/poll/PreVotePoll.astro';
+import PostVotePoll from '../../../components/poll/PostVotePoll.astro';
+
+import { get, vote } from '../../../db/vote';
+
+const { id } = Astro.params;
+const ip = Astro.clientAddress;
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const choice = data.get("choice");
+    await vote(id, ip, choice);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.log(error);
+    }
+  }
+}
+
+const { choice, votes } = await get(id, ip);
+---
+
+<div id="poll">
+    <ul id="list">
+        { 
+        choice === undefined ?
+            <PreVotePoll votes={votes} />
+            :
+            <PostVotePoll choice={choice} votes={votes} />
+        }
+    </ul>
+</div>
+
+
+<style>
+    ul {
+		border: 1px solid #313338;
+		border-radius: 16px;
+		padding: 0px 40px 0px 40px;
+	}
+	#poll {
+		width: 450px;
+		margin: 150px auto 0px auto;
+		padding: 10px 30px 10px 30px;
+
+		text-align: center;
+
+		list-style-type: none;
+	}
+</style>

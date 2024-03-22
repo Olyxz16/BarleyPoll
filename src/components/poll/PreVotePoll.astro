@@ -1,0 +1,15 @@
+---
+export const partial = true;
+
+import Option from './Option.astro'
+import Separator from '../Separator.astro';
+
+const { votes } = Astro.props;
+---
+
+{
+    votes.map(vote => 
+        <Option choice={vote.choice} />
+        <Separator />
+    )  
+}

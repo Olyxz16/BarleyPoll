@@ -1,0 +1,19 @@
+---
+export const partial = true;
+
+import Display from './Display.astro';
+import Separator from '../Separator.astro';
+
+const { id } = Astro.params;
+const { choice, votes } = Astro.props;
+---
+
+<form hx-get=`/poll/result/${id}` hx-trigger="load delay:2000ms" hx-target="#poll" hx-swap="outerHTML">
+
+</form>
+{
+    votes.map(vote => 
+        <Display choice={choice} vote={vote.choice} count={vote.count} />
+        <Separator />
+    )  
+}

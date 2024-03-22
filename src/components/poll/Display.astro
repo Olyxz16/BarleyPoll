@@ -1,0 +1,21 @@
+---
+export const partial = true;
+
+const { choice, vote, count } = Astro.props;
+---
+
+<li class={choice==vote?"choice":""}>
+    <p> { vote } | { count } </p>
+</li>
+
+<style>
+    li {
+        display: flex;
+        flex-direction: row;
+
+        margin: 15px 0px 15px 0px;
+    }
+    .choice {
+        background-color: green;
+    }
+</style>

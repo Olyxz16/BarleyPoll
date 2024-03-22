@@ -1,0 +1,52 @@
+---
+export const partial = true;
+
+import Button from '../Button.astro';
+
+const { id } = Astro.params;
+const { choice } = Astro.props;
+---
+
+
+<li>
+    <p> { choice } </p>
+    <form hx-post={`/poll/result/${id}`} hx-target="div#poll" hx-swap="outerHTML" hx-trigger="submit"> 
+        <input type="hidden" name="choice" value={choice} />
+        <Button type="submit" >
+            <img src="/tickicon.svg"/>
+        </Button>
+    </form>
+</li>
+
+
+<style>
+    li {
+        display: flex;
+        flex-direction: row;
+
+        margin: 15px 0px 15px 0px;
+    }
+    p {
+        width: 85%;
+        margin: 0px;
+        text-align: left;
+    }
+    button {
+        background: #13151a;
+        
+        border: 1px solid #313338;
+        border-radius: 5px;
+
+        width: 30px;
+        height: 30px;
+
+        align-self: center;
+        margin-right: 0%;
+        margin-left: auto;
+    }
+    img {
+        padding-top: 3px;
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
