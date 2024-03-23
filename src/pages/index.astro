@@ -16,6 +16,7 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 		<div id="poll">
 			<TitleInputArea />
 			<ul>
+				<h2> Choices </h2>
 				<template x-for="choice in choices">
 					<Option />
 					<Separator />
@@ -45,10 +46,14 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 		text-align: center;
 		margin-bottom: 1em;
 	}
+	h2 {
+		margin: 8px 0px 0px 0px;
+	}
 	ul {
 		border: 1px solid #313338;
 		border-radius: 16px;
-		padding: 0px 40px 0px 40px;
+		padding: 0px 40px 8px 40px;
+		margin: 32px 0px 16px 0px;
 	}
 	#poll {
 		width: 450px;
