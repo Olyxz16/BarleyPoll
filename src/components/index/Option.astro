@@ -2,23 +2,32 @@
 export const partial = true;
 
 import Button from '../Button.astro';
+import Separator from '../Separator.astro';
 ---
 
 
 <li>
-    <p x-text="choice"> </p>
-    <Button @click="$dispatch('remove', {choice: choice})">
-        <img src="/trashicon.svg"/>
-    </Button>
+    <div class="choice">
+        <p x-text="choice"> </p>
+        <Button @click="$dispatch('remove', {choice: choice})">
+            <img src="/trashicon.svg"/>
+        </Button>
+    </div>
+    <Separator />
 </li>
+
 
 
 <style>
     li {
         display: flex;
+        flex-direction: column;
+    }
+    .choice {
+        display: flex;
         flex-direction: row;
 
-        margin: 15px 0px 15px 0px;
+        margin: 8px 0px 8px 0px;
     }
     p {
         width: 85%;
