@@ -4,12 +4,20 @@ export const partial = true;
 import Option from './Option.astro'
 import Separator from '../Separator.astro';
 
+interface Props {
+  votes: {
+    choice: string,
+    count: number
+  }[]
+}
+
 const { votes } = Astro.props;
+let n = votes.length;
 ---
 
 {
-    votes.map(vote => 
+    votes.map(vote =>
         <Option choice={vote.choice} />
-        <Separator />
+        <Separator visible={n-->1} />
     )  
 }

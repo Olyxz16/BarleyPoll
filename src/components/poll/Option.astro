@@ -3,6 +3,10 @@ export const partial = true;
 
 import Button from '../Button.astro';
 
+interface Props {
+    choice: string
+}
+
 const { id } = Astro.params;
 const { choice } = Astro.props;
 ---

@@ -1,6 +1,12 @@
 ---
 export const partial = true;
 
+interface Props {
+    choice: string,
+    vote: string,
+    count: number
+}
+
 const { choice, vote, count } = Astro.props;
 ---
 

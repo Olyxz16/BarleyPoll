@@ -3,7 +3,6 @@ export const partial = true;
 
 import PreVotePoll from '../../../components/poll/PreVotePoll.astro';
 import PostVotePoll from '../../../components/poll/PostVotePoll.astro';
-
 import { get, vote } from '../../../db/vote';
 
 const { id } = Astro.params;
@@ -25,6 +24,7 @@ const { choice, votes } = await get(id, ip);
 ---
 
 <div id="poll">
+  <h2>Vote !</h2>
     <ul id="list">
         { 
         choice === undefined ?
@@ -44,7 +44,7 @@ const { choice, votes } = await get(id, ip);
 	}
 	#poll {
 		width: 450px;
-		margin: 150px auto 0px auto;
+		margin: 100px auto 0px auto;
 		padding: 10px 30px 10px 30px;
 
 		text-align: center;
