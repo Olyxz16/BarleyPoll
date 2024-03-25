@@ -10,7 +10,7 @@ import SubmitButton from '../components/index/SubmitButton.astro';
 <MainLayout>
 	<main x-data={`{title: "", choices: [], input: ""}`} 
 			@remove="choices.splice(choices.indexOf($event.detail.choice), 1)"
-			@add="$data.input.length>0&&choices.push($data.input); input=''">
+			@add="$data.input.length>0&&!choices.includes($data.input)&&choices.push($data.input); input=''">
 		<h1> Barley Poll </h1>
 		<div id="result"></div>
 		<div id="poll">
